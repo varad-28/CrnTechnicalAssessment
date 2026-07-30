@@ -13,3 +13,4 @@ C:\Users\ASUS\source\repos\CrnTechnicalAssessment\Application\obj\Debug\net8.0\A
 C:\Users\ASUS\source\repos\CrnTechnicalAssessment\Application\obj\Debug\net8.0\refint\Application.dll
 C:\Users\ASUS\source\repos\CrnTechnicalAssessment\Application\obj\Debug\net8.0\Application.pdb
 C:\Users\ASUS\source\repos\CrnTechnicalAssessment\Application\obj\Debug\net8.0\ref\Application.dll
+C:\Users\ASUS\source\repos\CrnTechnicalAssessment\Application\obj\Debug\net8.0\Application.sourcelink.json

@@ -18,7 +18,13 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add Database Context
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"), sqlOptions =>
+    {
+        sqlOptions.EnableRetryOnFailure(
+            maxRetryCount: 5,
+            maxRetryDelay: TimeSpan.FromSeconds(30),
+            errorNumbersToAdd: null);
+    }));
 
 builder.Services.AddScoped<IProductRepository, ProductRepository>();
 builder.Services.AddScoped<IProductService, ProductService>();
@@ -76,22 +82,15 @@ var app = builder.Build();
 
 
 app.UseMiddleware<ExceptionMiddleware>();
+app.UseMiddleware<ExceptionMiddleware>();
 
-if (app.Environment.IsDevelopment())
-{
-    app.UseSwagger();
-    app.UseSwaggerUI();
-}
+// Enable Swagger in all environments (including Docker/Production)
+app.UseSwagger();
+app.UseSwaggerUI();
 
 app.UseResponseCompression();
-// Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
-{
-    app.UseSwagger();
-    app.UseSwaggerUI();
-}
 
-
+// Configure the rest of your HTTP request pipeline below
 
 
 
@@ -102,5 +101,9 @@ app.UseAuthorization();
 
 
 app.MapControllers();
-
+using (var scope = app.Services.CreateScope())
+{
+    var dbContext = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
+    dbContext.Database.Migrate();
+}
 app.Run();

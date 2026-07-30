@@ -151,3 +151,4 @@ C:\Users\ASUS\source\repos\CrnTechnicalAssessment\API\obj\Debug\net8.0\ref\API.d
 C:\Users\ASUS\source\repos\CrnTechnicalAssessment\API\bin\Debug\net8.0\Asp.Versioning.Abstractions.dll
 C:\Users\ASUS\source\repos\CrnTechnicalAssessment\API\bin\Debug\net8.0\Asp.Versioning.Http.dll
 C:\Users\ASUS\source\repos\CrnTechnicalAssessment\API\bin\Debug\net8.0\Asp.Versioning.Mvc.dll
+C:\Users\ASUS\source\repos\CrnTechnicalAssessment\API\obj\Debug\net8.0\API.sourcelink.json

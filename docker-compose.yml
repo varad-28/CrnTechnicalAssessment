@@ -13,9 +13,9 @@ services:
     image: crn-api
     build:
       context: .
-      dockerfile: src/API/Dockerfile
+      dockerfile: API/Dockerfile
     ports:
-      - "8080:80"
+      - "8080:8080"
     depends_on:
       - sqlserver
     environment:
